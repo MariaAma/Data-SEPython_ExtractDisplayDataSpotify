@@ -6,6 +6,7 @@ Data Retrieval: Utilize Spotipy to fetch the user's recently played tracks from 
 Audio Feature Extraction: Extract essential audio features including danceability, energy, and valence for each track.
 Interactive Web Application: Utilize Streamlit to develop an interactive web application for visualizing the extracted audio features on dynamic bar charts.
 Personalized Insights: Provide users with insights into their music listening habits and preferences based on the characteristics of the songs they've recently listened to.
+Environment Variables: Utilize a .env file to securely store sensitive information such as user IDs and API credentials. However, users can directly pass their user IDs and API credentials to the project if preferred.
 
 # Technologies Used:
 Python: Used for data retrieval and visualization.
@@ -18,6 +19,7 @@ Authentication: Authenticate your application with Spotify API using OAuth to ac
 Data Retrieval: Retrieve the user's recently played tracks using Spotipy.
 Audio Feature Extraction: Extract danceability, energy, and valence for each track.
 Visualization: Plot the extracted audio features on a bar chart for analysis and interpretation.
+Environment Variables (Optional): Store your user ID and API credentials in a .env file for security. However, you can directly pass these credentials to the project if preferred.
 
 # Getting Started:
 Set Up Spotify Developer Account: Register as a Spotify Developer and obtain API credentials.
