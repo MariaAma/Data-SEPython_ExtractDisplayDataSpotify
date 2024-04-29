@@ -50,6 +50,6 @@ df = df[['track_name', 'danceability', 'energy', 'valence']]
 df.set_index('track_name', inplace = True)
 
 #----------
-st.subheader('Audio Features for my Top 10 tracks')
+st.subheader('Audio Features for my latest tracks')
 st.bar_chart(df, height= 500)
 
