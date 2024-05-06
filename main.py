@@ -1,6 +1,6 @@
 import streamlit as st  
 from streamlit_option_menu import option_menu
-import introduction, first_analysis
+import introduction, pages
 import time
 
 
@@ -38,25 +38,25 @@ class MultiApp:
             if not st.session_state["processing"]:  
                 st.session_state["processing"] = True  
                 try:
-                    first_analysis.log()
+                    pages.log()
                 finally:
                     st.session_state["processing"] = False 
             else:
                 time.sleep(3)
                 st.session_state["processing"] = True 
-                first_analysis.log()
+                pages.log()
 
         elif  app == 'Analysis of Latest Songs':
             if not st.session_state["processing"]:  
                 st.session_state["processing"] = True  
                 try:
-                    first_analysis.first_function()
+                    pages.first_function()
                 finally:
                     st.session_state["processing"] = False 
             else:
                 time.sleep(3)
                 st.session_state["processing"] = True 
-                first_analysis.first_function()
+                pages.first_function()
         elif app == 'Chatbot':
-                first_analysis.chatbot()
+                pages.chatbot()
     run()
