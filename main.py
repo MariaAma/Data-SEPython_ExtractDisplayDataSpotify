@@ -1,55 +1,62 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-import streamlit as st
-import os 
-import pandas as pd
-from dotenv import load_dotenv
+import streamlit as st  
+from streamlit_option_menu import option_menu
+import introduction, first_analysis
+import time
 
-
-#----------
-track_ids = []
-track_name= []
-
-
-#----------
-#Take environment variables from .env file and scope
-load_dotenv()  
-client_id = os.getenv("Client_ID")
-client_secret = os.getenv("Client_secret")
-redirect_uri= os.getenv("redirect_uri")
-
-
-#----------
-sp = spotipy.Spotify(
-                    auth_manager=SpotifyOAuth(client_id= client_id,
-                                            client_secret=client_secret,
-                                            redirect_uri= redirect_uri,
-                                            scope='user-read-recently-played')
-                    )
 
 st.set_page_config(page_title="Spotify Extract&Analysis Project", page_icon="🎵")
-st.title('Spotify API Project')
-base="dark"
 
+if "processing" not in st.session_state:
+    st.session_state["processing"] = False 
 
+class MultiApp: 
 
-#----------
-top_tracks = sp.current_user_recently_played(limit=50)
-for idx, item in enumerate(top_tracks['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " - ", track['name'], "-", track ['id'])
-    track_ids.append(track['id'])
-    track_name.append(track['name'])
+    def __init__(self):
+        self.apps = []
 
+    def add_apps(self, title, function):
+        self.app.append({
+            'title': title,
+            'function': function
+        })
 
-#----------
-audio_features = sp.audio_features(track_ids)
-df = pd.DataFrame(audio_features)
-df['track_name'] = track_name
-df = df[['track_name', 'danceability', 'energy', 'valence']]
-df.set_index('track_name', inplace = True)
+    def run():
+        with st.sidebar:
+            app = option_menu(
+                menu_title= 'Music App',
+                options = ['Introduction','Login','Analysis of Latest Songs','Chatbot'],
+                menu_icon='rocket-takeoff',
+                icons = ["x",'x','x','x','x'],
+                default_index= 0,
+                styles = { "backgroundColor": "#FFFFFF", "color": "#A7A6BA" }
+            )
+            
+        if app == 'Introduction':
+            if not st.session_state["processing"]:  
+                introduction.app()  
+        elif app == 'Login':
+            if not st.session_state["processing"]:  
+                st.session_state["processing"] = True  
+                try:
+                    first_analysis.log()
+                finally:
+                    st.session_state["processing"] = False 
+            else:
+                time.sleep(3)
+                st.session_state["processing"] = True 
+                first_analysis.log()
 
-#----------
-st.subheader('Audio Features for my latest tracks')
-st.bar_chart(df, height= 500)
-
+        elif  app == 'Analysis of Latest Songs':
+            if not st.session_state["processing"]:  
+                st.session_state["processing"] = True  
+                try:
+                    first_analysis.first_function()
+                finally:
+                    st.session_state["processing"] = False 
+            else:
+                time.sleep(3)
+                st.session_state["processing"] = True 
+                first_analysis.first_function()
+        elif app == 'Chatbot':
+                first_analysis.chatbot()
+    run()
