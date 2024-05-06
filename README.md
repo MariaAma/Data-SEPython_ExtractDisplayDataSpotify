@@ -1,4 +1,4 @@
-##In process, I'm making some changes to the project to enhance its functionality. These updates are not major overhauls, but they add more detail and fine-tuning to improve overall performance and user experience.
+#In process, I'm making some changes to the project to enhance its functionality. These updates are not major overhauls, but they add more detail and fine-tuning to improve overall performance and user experience.
 
 # Spotify Audio Features Analysis with Spotipy
 
