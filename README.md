@@ -27,7 +27,7 @@ Spotipy: Python library for interacting with the Spotify Web API.
 Streamlit: Python library for building interactive web applications with ease.
 OAuth: Secure authentication mechanism to access user-specific Spotify data.
 
-# Examples:
+# Examples with my Authentication and a demo playlist: Here is the playlist [[link](https://open.spotify.com/playlist/37i9dQZF1DX0BcQWzuB7ZO)].
 
 Homepage:
 
@@ -53,7 +53,7 @@ Chatbot: You can easily specify the danceability, energy, instrumentalness, spee
 
 ![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/d98877d8-7b35-402c-9169-b91e465a25be)
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_29_43 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/47e42af5-5c03-4500-90fd-d6ef2aa276d8)
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_29_43 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/62619a37-ca8a-4753-ac7b-6eaa6239f828)
 
 
 
