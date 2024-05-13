@@ -47,8 +47,6 @@ Visualization: Plot the extracted audio features on a bar chart for analysis and
 
 ![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_53 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/0881095e-03cc-4149-b8df-33336d66fbda)
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/ed1cf352-53af-46eb-9882-611722a5f35a)
-
 Chatbot: You can easily specify the danceability, energy, instrumentalness, speechiness, and valence you desire, and it will provide you with the closest song from the latest 50 songs you have heard:
 
 ![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/d98877d8-7b35-402c-9169-b91e465a25be)
