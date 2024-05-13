@@ -27,11 +27,36 @@ Spotipy: Python library for interacting with the Spotify Web API.
 Streamlit: Python library for building interactive web applications with ease.
 OAuth: Secure authentication mechanism to access user-specific Spotify data.
 
-# Example Usage:
-Authentication: Authenticate your application with Spotify API using OAuth to access user data.
+# Examples:
+
+Homepage:
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_03 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/ff48ea20-3860-4073-8504-07d504606376)
+
+Authentication: This application performs automatic authentication with the Spotify API. However, users need to provide their client ID and client secret for the authentication process to proceed without active intervention:
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_15 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/b3ef1b38-d472-4733-a056-cc2fef25b528)
+
 Data Retrieval: Retrieve the user's recently played tracks using Spotipy.
-Audio Feature Extraction: Extract danceability, energy, instrumentalness, speechiness, and valence for each track.
-Visualization: Plot the extracted audio features on a bar chart for analysis and interpretation.
+Audio Feature Extraction: This application extracts danceability, energy, instrumentalness, speechiness, and valence for each track, and identifies the genre or type of music associated with each artist. Users can access this information to explore and categorize music based on its genre or style.
+Visualization: Plot the extracted audio features on a bar chart for analysis and interpretation:
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_25 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/c694024e-a0bd-4cb9-ad2e-2f0596d2d130)
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_39 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/8b37676c-c08c-47db-a043-3b5d24817e2d)
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_53 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/0881095e-03cc-4149-b8df-33336d66fbda)
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/ed1cf352-53af-46eb-9882-611722a5f35a)
+
+Chatbot: You can easily specify the danceability, energy, instrumentalness, speechiness, and valence you desire, and it will provide you with the closest song from the latest 50 songs you have heard:
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/d98877d8-7b35-402c-9169-b91e465a25be)
+
+![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_29_43 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/47e42af5-5c03-4500-90fd-d6ef2aa276d8)
+
+
+
 
 # Contributions:
 Contributions, feedback, and suggestions are welcome! Feel free to fork the repository, make improvements, and submit pull requests to enhance the project further.
