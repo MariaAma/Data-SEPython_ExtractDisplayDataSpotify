@@ -51,7 +51,6 @@ Chatbot: You can easily specify the danceability, energy, instrumentalness, spee
 
 ![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/d98877d8-7b35-402c-9169-b91e465a25be)
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_29_43 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/62619a37-ca8a-4753-ac7b-6eaa6239f828)
 
 
 
