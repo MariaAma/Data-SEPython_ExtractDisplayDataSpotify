@@ -13,9 +13,8 @@ df1 = None
 
 
 def log():
-    global num
+    global num, client_id, client_secret
     base="dark"
-    global client_id, client_secret
     st.subheader(':red[On this login page:]')
     st.write(':red[You need to enter the Client ID and Client Secret each time you visit.]')
     client_id = st.text_input(":grey[Enter your Client ID]")
@@ -35,16 +34,15 @@ def first_function():
                 app()
         except:
                 st.write(':grey[Wait a minute to load data.]')
-                time.sleep(20)
-                st.subheader(':red[Please give a accurate Client ID and Client Secret.]')
+                time.sleep(15)
+                try: 
+                     app()
+                except:
+                    st.subheader(':red[Please give a accurate Client ID and Client Secret.]')
             
 
-
 def sp_json():
-        global client_secret, client_id, top_tracks
-        #----------
-        global sp
-        global counter, track_ids, track_name
+        global client_secret, client_id, top_tracks, sp, counter, track_ids, track_name
         track_ids = []
         track_name= []
         artist_gerne = []
@@ -52,7 +50,7 @@ def sp_json():
 
         redirect_uri= "http://localhost:3000"
 
-            #----------
+        #----------
         sp = spotipy.Spotify(
                                 auth_manager=SpotifyOAuth(client_id= client_id,
                                                         client_secret=client_secret,
@@ -60,17 +58,14 @@ def sp_json():
                                                         scope='user-read-recently-played')
                                 )
         top_tracks = sp.current_user_recently_played(limit=50)
+        
         #----------
-        for idx, item in enumerate(top_tracks['items']):
+        for item in top_tracks['items']:
                 track = item['track']
-                print(idx, track['artists'][0]['name']," - ", track['name'], "-", track ['id'])
                 result = sp.search(track['artists'][0]['name'], limit=1, type="artist")
                 artists = result["artists"]
                 if artists["items"][0]["genres"] != []:
-                    print(track['artists'][0]['name']," genre: ",artists["items"][0]["genres"])
                     artist_gerne = artist_gerne + artists["items"][0]["genres"]
-                else:
-                    print(['No Genre Available'])
                 
                 track_ids.append(track['id'])
                 track_name.append(track['name'])
@@ -78,10 +73,10 @@ def sp_json():
         #----------
         d = Counter(artist_gerne)
         counter = dict(d)
-        print(counter)
 
 def app():        
         global sp, df1, counter, track_ids, track_name,top_tracks
+        base="dark"
 
         #----------
         audio_features = sp.audio_features(track_ids)
@@ -89,7 +84,7 @@ def app():
         #----------
         st.title('Spotify API Project')
         st.write("This bar chart displays the latest 50 songs I've listened to on Spotify. It provides an overview of my current music trends by focusing on distinct tracks, regardless of how many times I play each song.")
-        base="dark"
+        
 
         #----------
         audio_features = sp.audio_features(track_ids)
@@ -117,8 +112,6 @@ def app():
      
 def chatbot():
     global consecutive_pairs, top_tracks,  df1, counter, track_ids, track_name,top_tracks, sp
-
-
 
     # Initialize session state to store chat history
     st.subheader(":red[------------:balloon: Welcome to the Chatbot Interface :balloon:]")
@@ -148,6 +141,7 @@ def chatbot():
 
         user_text = user_text.split()
         remain_text = []
+        
         for word in user_text:
             if word in {"danceability", "energy", "instrumentalness", "speechiness", "valence"}:
                 remain_text.append(word)
@@ -156,7 +150,7 @@ def chatbot():
                  if float(word)<=1 and float(word)>=0 :
                     remain_text.append(word)
 
-        if is_even(len(remain_text)) and len(remain_text) !=0:
+        if is_even(len(remain_text)) and len(remain_text)!=0:
             st.balloons()
             time.sleep(1)
             st.balloons()
@@ -239,29 +233,29 @@ def chatbot():
                         df1['valence'] = df1['valence']**2
                         l.append('valence')
                 
-                selected_df = df1[l]
-                df1['Sum'] = selected_df.sum(axis=1)
-                min_sum = df1['Sum'].min()
-                row_with_min_sum = df1[df1['Sum'] == min_sum]
-                row_with_min_sum.reset_index(inplace=True)
+            selected_df = df1[l]
+            df1['Sum'] = selected_df.sum(axis=1)
+            min_sum = df1['Sum'].min()
+            row_with_min_sum = df1[df1['Sum'] == min_sum]
+            row_with_min_sum.reset_index(inplace=True)
 
-                message_printed = True
-                track_min = row_with_min_sum['track_name'].tolist()[0]
+            message_printed = True
+            track_min = row_with_min_sum['track_name'].tolist()[0]
                 
-                artist_chat =[]
-                my_list = []
-                for item in top_tracks['items']:
-                        track = item['track']
-                        if track_min in track['name']:
-                                artist_chat.append(track)
-                                if message_printed:
-                                    st.write("The song derived from the elements you gave me is:")
-                                    message_printed = False
-                                for item in artist_chat:
-                                    if item['id'] not in my_list:
-                                        st.write(item['artists'][0]['name']," - ", item['name'], "-", item['id'])
-                                        my_list.append(item['id'])
-    
+            artist_chat =[]
+            my_list = []
+            for item in top_tracks['items']:
+                    track = item['track']
+                    if track_min in track['name']:
+                            artist_chat.append(track)
+                            if message_printed:
+                                st.write("The song derived from the elements you gave me is:")
+                                message_printed = False
+                            for item in artist_chat:
+                                if item['id'] not in my_list:
+                                    st.write(item['artists'][0]['name']," - ", item['name'], "-", item['id'])
+                                    my_list.append(item['id'])
+
         elif remain_text == []:
                 st.subheader(':red[--------------You give me wrong text elements.]')
                 st.subheader(':grey[-----------------------------------OR]')
@@ -282,8 +276,4 @@ def is_number(string):
         float(string)
         return True
     except ValueError:
-        try:
-            float(string)
-            return True
-        except ValueError:
-            return False
+        return False
