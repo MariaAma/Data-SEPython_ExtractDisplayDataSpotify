@@ -1,7 +1,6 @@
 import streamlit as st
 
 def app():
-    base="dark"
     st.title(':red[**Welcome!**]')
     st.subheader(":grey[Let\'s dive in—no snorkel required!]")
     st.write(":grey[This project compain Data Engineer & Software Engineer!]")
