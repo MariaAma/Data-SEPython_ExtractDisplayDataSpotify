@@ -14,19 +14,23 @@ df1 = None
 
 def log():
     global num, client_id, client_secret
-    base="dark"
+    st.session_state["client_id"] = ""
+    st.session_state["client_secret"] = ""
+    
     st.subheader(':red[On this login page:]')
     st.write(':red[You need to enter the Client ID and Client Secret each time you visit.]')
     client_id = st.text_input(":grey[Enter your Client ID]")
     client_secret = st.text_input(":grey[Enter your Client Secret]")
-
-    if client_id and client_secret:
-        global num
-        num +=1
-        st.write(":red[Client ID and User ID have been entered.]")
-        st.write(":grey[It's time to dive into Analysis or Chatbot with the elements, you gave me.]")
-        st.write(':red[Wait a minute to load data and then move on Analysis or Chatbot.]')
-        sp_json()
+    if st.button(':red[Login in]'):
+        if client_id and client_secret:
+            global num
+            num +=1
+            st.write(":red[Client ID and User ID have been entered.]")
+            st.write(":grey[It's time to dive into Analysis or Chatbot with the elements, you gave me.]")
+            st.write(':red[Wait a minute to load data and then move on Analysis or Chatbot.]')
+            sp_json()
+        else: 
+             st.write(':red[Please give a accurate Client ID and Client Secret.]')
 
 
 def first_function():
@@ -36,7 +40,7 @@ def first_function():
                 st.write(':grey[Wait a minute to load data.]')
                 time.sleep(15)
                 try: 
-                     app()
+                     app1()
                 except:
                     st.subheader(':red[Please give a accurate Client ID and Client Secret.]')
             
@@ -76,7 +80,6 @@ def sp_json():
 
 def app():        
         global sp, df1, counter, track_ids, track_name,top_tracks
-        base="dark"
 
         #----------
         audio_features = sp.audio_features(track_ids)
@@ -109,7 +112,31 @@ def app():
         st.bar_chart(df2.set_index('Genre'), height= 400)
         st.write(df2)
 
-     
+def app1():
+        #----------
+        audio_features = sp.audio_features(track_ids)
+        df1 = pd.DataFrame(audio_features)
+        df1['track_name'] = track_name
+        df1 = df1[['track_name', 'danceability', 'energy', 'instrumentalness','speechiness', 'valence']]
+        df1.set_index('track_name', inplace = True)
+
+
+        #----------
+        df2 = pd.DataFrame(counter.items(), columns=['Genre', 'Count'])
+
+
+        #----------
+        st.subheader('Audio Features for my latest tracks')
+        st.bar_chart(df1, height= 400)
+        st.write(df1)
+
+        #----------
+        st.subheader("Music Genre Counts")
+        st.write("This bar chart displays the count of different music genres.")
+        st.bar_chart(df2.set_index('Genre'), height= 400)
+        st.write(df2)
+
+
 def chatbot():
     global consecutive_pairs, top_tracks,  df1, counter, track_ids, track_name,top_tracks, sp
 
