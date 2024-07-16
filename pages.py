@@ -4,31 +4,56 @@ import streamlit as st
 import pandas as pd
 from collections import Counter
 import time
+from spotipy import SpotifyOauthError
 
-global num
-num = 0
 client_id =''
 client_secret = ''
 df1 = None
 
 
 def log():
-    global num, client_id, client_secret
-    st.session_state["client_id"] = ""
-    st.session_state["client_secret"] = ""
+    global sp, df1, counter, track_ids, track_name,top_tracks
     
     st.subheader(':red[On this login page:]')
     st.write(':red[You need to enter the Client ID and Client Secret each time you visit.]')
-    client_id = st.text_input(":grey[Enter your Client ID]")
-    client_secret = st.text_input(":grey[Enter your Client Secret]")
+    client_id = st.text_input(":grey[Enter your Client ID]", key="client_id")
+    client_secret = st.text_input(":grey[Enter your Client Secret]", key="client_secret")
     if st.button(':red[Login in]'):
         if client_id and client_secret:
-            global num
-            num +=1
             st.write(":red[Client ID and User ID have been entered.]")
             st.write(":grey[It's time to dive into Analysis or Chatbot with the elements, you gave me.]")
             st.write(':red[Wait a minute to load data and then move on Analysis or Chatbot.]')
-            sp_json()
+            redirect_uri= "http://localhost:3000"
+            try: 
+                sp = spotipy.Spotify( auth_manager=SpotifyOAuth(client_id= client_id,
+                                                        client_secret=client_secret,
+                                                        redirect_uri= redirect_uri,
+                                                        scope='user-read-recently-played'))
+                track_ids = []
+                track_name= []
+                artist_gerne = []
+                top_tracks =[]
+
+
+                top_tracks = sp.current_user_recently_played(limit=50)
+
+            #----------
+                for item in top_tracks['items']:
+                    track = item['track']
+                    result = sp.search(track['artists'][0]['name'], limit=1, type="artist")
+                    artists = result["artists"]
+                    if artists["items"][0]["genres"] != []:
+                        artist_gerne = artist_gerne + artists["items"][0]["genres"]
+                    
+                    track_ids.append(track['id'])
+                    track_name.append(track['name'])
+
+            #----------
+                d = Counter(artist_gerne)
+                counter = dict(d)
+
+            except:
+                st.write(':red[Please give a accurate Client ID and Client Secret.]')
         else: 
              st.write(':red[Please give a accurate Client ID and Client Secret.]')
 
@@ -45,44 +70,8 @@ def first_function():
                     st.subheader(':red[Please give a accurate Client ID and Client Secret.]')
             
 
-def sp_json():
-        global client_secret, client_id, top_tracks, sp, counter, track_ids, track_name
-        track_ids = []
-        track_name= []
-        artist_gerne = []
-        top_tracks =[]
-
-        redirect_uri= "http://localhost:3000"
-
-        #----------
-        sp = spotipy.Spotify(
-                                auth_manager=SpotifyOAuth(client_id= client_id,
-                                                        client_secret=client_secret,
-                                                        redirect_uri= redirect_uri,
-                                                        scope='user-read-recently-played')
-                                )
-        top_tracks = sp.current_user_recently_played(limit=50)
-        
-        #----------
-        for item in top_tracks['items']:
-                track = item['track']
-                result = sp.search(track['artists'][0]['name'], limit=1, type="artist")
-                artists = result["artists"]
-                if artists["items"][0]["genres"] != []:
-                    artist_gerne = artist_gerne + artists["items"][0]["genres"]
-                
-                track_ids.append(track['id'])
-                track_name.append(track['name'])
-
-        #----------
-        d = Counter(artist_gerne)
-        counter = dict(d)
-
 def app():        
         global sp, df1, counter, track_ids, track_name,top_tracks
-
-        #----------
-        audio_features = sp.audio_features(track_ids)
 
         #----------
         st.title('Spotify API Project')
@@ -112,8 +101,10 @@ def app():
         st.bar_chart(df2.set_index('Genre'), height= 400)
         st.write(df2)
 
+
 def app1():
         #----------
+        global sp, df1, counter, track_ids, track_name,top_tracks        
         audio_features = sp.audio_features(track_ids)
         df1 = pd.DataFrame(audio_features)
         df1['track_name'] = track_name
@@ -136,7 +127,7 @@ def app1():
         st.bar_chart(df2.set_index('Genre'), height= 400)
         st.write(df2)
 
-
+     
 def chatbot():
     global consecutive_pairs, top_tracks,  df1, counter, track_ids, track_name,top_tracks, sp
 
@@ -292,7 +283,7 @@ def chatbot():
     except:
         st.write(':grey[---------------------------------------------------Please, wait to load data.]')
         time.sleep(15)
-        st.subheader(':red[-----------------Please, put Client ID and Client Secret.]')
+        st.write(':red[----------------------Please, put Client ID and Client Secret or Check the text you gave me.]')
 
 
 def is_even(n):
