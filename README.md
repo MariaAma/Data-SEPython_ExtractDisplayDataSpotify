@@ -5,19 +5,9 @@ This project uses the Spotipy library to analyze the audio features of the last 
 
 Users need to provide their Spotify client ID and client secret to authenticate and access the necessary data. Once authenticated, the program retrieves the user's recent listening history and analyzes each track's audio features.
 
-In addition, the program allows users to interact with a chatbox where they can specify desired values for danceability, energy, instrumentalness, speechiness, and valence. Based on these criteria, the program identifies and returns the song from the recent listening history that best matches the given parameters.
+In addition, the program allows users to interact with a texttbox where they can specify desired values for danceability, energy, instrumentalness, speechiness, and valence. Based on these criteria, the program identifies and returns the song from the recent listening history that best matches the given parameters.
 
 With this information, users can better understand their music taste and possibly discover new tracks or artists that align with their preferences. This project is useful for those interested in gaining deeper insights into their Spotify listening habits and exploring music recommendations based on specific audio features.
-
-# Key Features:
-Spotify Integration: Connects with the Spotify API to fetch the last 50 songs a user has listened to.
-Audio Features Extraction: Retrieves and analyzes audio features for each song, including danceability, energy, instrumentalness, speechiness, and valence.
-User Interaction: Includes a chatbox for users to enter desired values for the above-mentioned audio features, allowing them to explore their listening history based on specific criteria.
-Song Matching: Compares the specified audio feature values against the user's recent listening history to find the song that best matches those criteria.
-Music Preferences Analysis: Offers insights into the user's music preferences and listening patterns based on the audio features of their recently played songs.
-Authentication: Requires Spotify client ID and client secret to authenticate and access user data, ensuring secure data retrieval.
-Flexible Use Cases: Useful for exploring personal music tastes, discovering patterns in listening behavior, and creating custom music recommendations based on audio features.
-Compatibility: Compatible with Python environments and relies on the Spotipy library for Spotify API interactions.
 
 # Technologies Used:
 Python: Used for data retrieval and visualization.
@@ -29,28 +19,33 @@ OAuth: Secure authentication mechanism to access user-specific Spotify data.
 
 Homepage:
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_03 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/ff48ea20-3860-4073-8504-07d504606376)
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_15_59 PM](https://github.com/user-attachments/assets/14d6c73c-22d5-41a6-b513-8a342e4765ce)
 
 Authentication: This application performs automatic authentication with the Spotify API. However, users need to provide their client ID and client secret for the authentication process to proceed without active intervention:
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_15 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/b3ef1b38-d472-4733-a056-cc2fef25b528)
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_16_23 PM](https://github.com/user-attachments/assets/90fbe677-f47f-4b65-8ced-6719c28cba22)
+
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 2_57_00 PM](https://github.com/user-attachments/assets/93166a3d-90e9-4731-af39-9f5a7f2235cc)
+
 
 Data Retrieval: Retrieve the user's recently played tracks using Spotipy.
 Audio Feature Extraction: This application extracts danceability, energy, instrumentalness, speechiness, and valence for each track, and identifies the genre or type of music associated with each artist. Users can access this information to explore and categorize music based on its genre or style.
-Visualization: Plot the extracted audio features on a bar chart for analysis and interpretation:
+Visualization: Plot the extracted audio features on a bar chart for analysis:
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_25 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/c694024e-a0bd-4cb9-ad2e-2f0596d2d130)
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_17_26 PM](https://github.com/user-attachments/assets/158265d5-a539-4a61-9230-10285ac51d37)
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_39 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/8b37676c-c08c-47db-a043-3b5d24817e2d)
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_17_37 PM](https://github.com/user-attachments/assets/f74ee8e8-1c32-4cd3-9c0a-ddbd0d570809)
 
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 13_5_2024 6_20_53 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/0881095e-03cc-4149-b8df-33336d66fbda)
-
-Chatbot: You can easily specify the danceability, energy, instrumentalness, speechiness, and valence you desire, and it will provide you with the closest song from the latest 50 songs you have heard:
-
-![Spotify Extract Analysis Project - Προσωπικό - Microsoft​ Edge 6_5_2024 7_32_38 μμ](https://github.com/MariaAma/Data-SEPython_ExtractDisplayDataSpotify/assets/79280783/d98877d8-7b35-402c-9169-b91e465a25be)
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_17_48 PM](https://github.com/user-attachments/assets/d529e241-3fa1-4eea-aa97-347226ab5e35)
 
 
+Textbox: You can easily specify the danceability, energy, instrumentalness, speechiness, and valence you desire, and it will provide you with the closest song from the latest 50 songs you have heard:
 
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_17_56 PM](https://github.com/user-attachments/assets/78d888c1-3969-4511-a845-d1219d69fab7)
+
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_18_23 PM](https://github.com/user-attachments/assets/d721f3a2-4c6b-43ed-a7c1-06795790feef)
+
+![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_18_40 PM](https://github.com/user-attachments/assets/ea56e08b-8783-4b31-82be-c620fc428253)
 
 
 # Contributions:
