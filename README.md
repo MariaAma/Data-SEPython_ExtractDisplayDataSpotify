@@ -47,7 +47,7 @@ Textbox: You can easily specify the danceability, energy, instrumentalness, spee
 
 ![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_18_40 PM](https://github.com/user-attachments/assets/ea56e08b-8783-4b31-82be-c620fc428253)
 
-Once you log in with a specific ClientID and ClientSecret, you cannot log in again using a different ClientID and ClientSecret, unless you restart the application and wait for a few hours:
+Once you log in with a specific ClientID and ClientSecret, you cannot log in again using a different ClientID and ClientSecret unless you restart the application and wait for a few hours. Even if you restart the application and enter a new ClientID and ClientSecret, the cache will still cause the application to display the data retrieved from the previous session if you don't wait some time:
 
 ![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_19_03 PM](https://github.com/user-attachments/assets/fcf40d36-e461-4b84-9368-640a33bddabc)
 
