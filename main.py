@@ -18,7 +18,7 @@ class MultiApp:
         with st.sidebar:
             app = option_menu(
                 menu_title= 'Music App',
-                options = ['Introduction','Login','Analysis of Latest Songs','Chatbot'],
+                options = ['Introduction','Login','Analysis of Latest Songs','Textbox'],
                 menu_icon='rocket-takeoff',
                 icons = ["x",'x','x','x','x'],
                 styles = { "backgroundColor": "#FFFFFF", "color": "#A7A6BA" }
@@ -33,6 +33,6 @@ class MultiApp:
         elif  app == 'Analysis of Latest Songs':
                 first_analysis.first_function()
 
-        elif app == 'Chatbot':
+        elif app == 'Textbox':
                 first_analysis.chatbot()
     run()
