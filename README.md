@@ -51,6 +51,11 @@ Once you log in with a specific ClientID and ClientSecret, you cannot log in aga
 
 ![Spotify Extract Analysis Project - Personal - Microsoft​ Edge 8_29_2024 3_19_03 PM](https://github.com/user-attachments/assets/fcf40d36-e461-4b84-9368-640a33bddabc)
 
+#Third-Party Libraries and Licenses
+This project uses the following libraries:
+
+- **Spotipy**, which is licensed under the MIT License.
+- **Streamlit**, which is licensed under the Apache 2.0 License.
 
 # Contributions:
 Contributions, feedback, and suggestions are welcome! Feel free to fork the repository, make improvements, and submit pull requests to enhance the project further.
